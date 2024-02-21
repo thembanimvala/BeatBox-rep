@@ -27,9 +27,5 @@ class Writer extends Model
     }
 
 
-    // public function blogs(): HasMany
-    // {
-    //     return $this->hasMany(Blog::class);
-    // }
 
 }
