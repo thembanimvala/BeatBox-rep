@@ -16,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class => UserPolicy::class,
-    ];
+        ];
 
     /**
      * Register any authentication / authorization services.
@@ -25,8 +25,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-    Gate::before(function ($user, $ability) {
-         return $user->hasRole('Superuser') ? true : null;
+        Gate::before(function ($user, $ability) {
+            return $user->hasRole('Superuser') ? true : null;
         });
     }
 }
