@@ -36,9 +36,8 @@ class WriterResource extends Resource
                 ->maxLength(255),
             Forms\Components\Textarea::make('bio')
                 ->required()
-                ->maxWidth(255)
-                ->columnSpanFull()
-                ->columns(3),
+                ->autosize()
+                ->columnSpanFull(),
             ]);
 
 

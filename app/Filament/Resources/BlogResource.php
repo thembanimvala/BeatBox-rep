@@ -15,6 +15,7 @@ use App\Models\Writer;
 use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -67,15 +68,15 @@ class BlogResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->columns(3),
-                Forms\Components\Select::make('tags')
-                    ->label('Tags')
-                    ->multiple()
-                    ->searchable()
-                    ->relationship(titleAttribute: 'name')
-                    ->getSearchResultsUsing(fn (string $search): array => tag::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
-                    ->getOptionLabelsUsing(fn (array $values): array => tag::whereIn('id', $values)->pluck('name', 'id')->toArray())
-                    ->preload(),
-            ]);
+                  Forms\Components\Select::make('tags')
+                      ->label('Tags')
+                      ->multiple()
+                      ->searchable()
+                      ->relationship(titleAttribute: 'name')
+                      ->getSearchResultsUsing(fn (string $search): array => tag::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
+                      ->getOptionLabelsUsing(fn (array $values): array => tag::whereIn('id', $values)->pluck('name', 'id')->toArray())
+                      ->preload(),
+                    ]);
     }
 
     public static function table(Table $table): Table
@@ -133,7 +134,7 @@ class BlogResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+
         ];
     }
 
