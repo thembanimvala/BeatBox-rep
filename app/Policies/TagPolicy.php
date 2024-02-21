@@ -13,23 +13,25 @@ class TagPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        if ($user->hasRole('Superuser')){
+            return true;
+        }
+        return $user->can('tags.list');
     }
-
     /**
      * Determine whether the user can view the model.
      */
     public function view(User $user, Tag $tag): bool
     {
-        //
+        return $user->can('tags.view');
     }
 
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user, Tag $tag): bool
     {
-        //
+        return $user->can('tags.create');
     }
 
     /**
@@ -37,15 +39,14 @@ class TagPolicy
      */
     public function update(User $user, Tag $tag): bool
     {
-        //
+        return $user->can('tags.update');
     }
-
     /**
      * Determine whether the user can delete the model.
      */
     public function delete(User $user, Tag $tag): bool
     {
-        //
+        return $user->can('tags.delete');
     }
 
     /**
@@ -53,14 +54,13 @@ class TagPolicy
      */
     public function restore(User $user, Tag $tag): bool
     {
-        //
+        return $user->can('tags.restore');
     }
-
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Tag $tag): bool
+    public function forcedelete(User $user, Tag $tag): bool
     {
-        //
+        return $user->can('tags.destroy');
     }
 }

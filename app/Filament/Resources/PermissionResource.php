@@ -26,7 +26,7 @@ class PermissionResource extends Resource
     {
         return $form
         ->schema([
-        TextInput::make('name')
+            TextInput::make('name')
             ->required()
             ->minLength(3)
             ->maxLength(255),

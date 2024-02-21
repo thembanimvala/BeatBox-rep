@@ -35,17 +35,17 @@ class RoleResource extends Resource
         return $form
         ->schema([
             TextInput::make('name')
-            ->required()
-            ->minLength(3)
-            ->maxLength(255),
-        Select::make('permission')
-            ->multiple()
-            ->searchable()
-            ->getSearchResultsUsing(fn (string $search): array => Permission::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
-            ->getOptionLabelsUsing(fn (array $values): array => Permission::whereIn('id', $values)->pluck('name', 'id')->toArray())
-            ->relationship('permissions', 'name')
-            ->preload(),
-            ]);
+                ->required()
+                ->minLength(3)
+                ->maxLength(255),
+            Select::make('permission')
+                ->multiple()
+                ->searchable()
+                ->getSearchResultsUsing(fn (string $search): array => Permission::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
+                ->getOptionLabelsUsing(fn (array $values): array => Permission::whereIn('id', $values)->pluck('name', 'id')->toArray())
+                ->relationship('permissions', 'name')
+                ->preload(),
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -55,18 +55,18 @@ class RoleResource extends Resource
                 TextColumn::make('name')
                 ->searchable()
                 ->sortable(),
-            ])
+                ])
             ->filters([
                 //
-            ])
+                ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
+                ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+        ]);
     }
 
     public static function getRelations(): array

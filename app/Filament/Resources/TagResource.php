@@ -36,10 +36,10 @@ class TagResource extends Resource
     {
         return $form
             ->schema([
-            Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('name')
                 ->required()
                 ->maxLength(64),
-        ]);
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -60,14 +60,14 @@ class TagResource extends Resource
                 ->dateTime()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
-            ])
+                ])
             ->filters([
                 //
-            ])
+                ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-            ])
+                ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                 Tables\Actions\DeleteBulkAction::make(),

@@ -64,10 +64,10 @@ class BlogResource extends Resource
                     ->required()
                     ->columnSpanFull()
                     ->autosize(),
-                Forms\Components\TextInput::make('photo')
-                    ->required()
-                    ->maxLength(255)
-                    ->columns(3),
+                Forms\Components\FileUpload::make('photo')
+                    ->image()
+                    ->acceptedFileTypes(['image/jpeg', 'image/webp'])
+                    ->openable(),
                 Forms\Components\Select::make('tags')
                       ->label('Tags')
                       ->multiple()
@@ -76,7 +76,7 @@ class BlogResource extends Resource
                       ->getSearchResultsUsing(fn (string $search): array => tag::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
                       ->getOptionLabelsUsing(fn (array $values): array => tag::whereIn('id', $values)->pluck('name', 'id')->toArray())
                       ->preload(),
-                    ]);
+            ]);
     }
 
     public static function table(Table $table): Table
