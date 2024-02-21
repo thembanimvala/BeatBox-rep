@@ -20,8 +20,8 @@ class UsersRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name~')
-                    ->required()
-                    ->maxLength(255),
+                ->required()
+                ->maxLength(255),
             ]);
 
     }
@@ -44,7 +44,7 @@ class UsersRelationManager extends RelationManager
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

@@ -68,7 +68,7 @@ class BlogResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->columns(3),
-                  Forms\Components\Select::make('tags')
+                Forms\Components\Select::make('tags')
                       ->label('Tags')
                       ->multiple()
                       ->searchable()
@@ -113,20 +113,21 @@ class BlogResource extends Resource
                     ->searchable()
                     ->wrap()
                     ->badge()
-                    ->label('Tags'),
-            ])
+                    ->label('Tags')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                    ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
-            ])
+                ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
-            ])
+                    ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\ForceDeleteBulkAction::make(),
+                Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }
@@ -134,8 +135,8 @@ class BlogResource extends Resource
     public static function getRelations(): array
     {
         return [
-
-        ];
+            //
+            ];
     }
 
     public static function getPages(): array
@@ -144,8 +145,7 @@ class BlogResource extends Resource
             'index' => Pages\ListBlogs::route('/'),
             'create' => Pages\CreateBlog::route('/create'),
             'edit' => Pages\EditBlog::route('/{record}/edit'),
-
-        ];
+            ];
     }
 
     public static function getEloquentQuery(): Builder
@@ -153,7 +153,7 @@ class BlogResource extends Resource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+                ]);
     }
 
     public static function getNavigationBadge(): ?string

@@ -31,11 +31,11 @@ class ListUsers extends ListRecords
                 ->modifyQueryUsing(fn (Builder $query) => $query)
                 ->badge(User::query()->count())->badgeColor('success'),
             'Active' => ComponentsTab::make('Active')
-              ->modifyQueryUsing(fn (Builder $query) => $query->where('is_active', 1))
-              ->badge(User::query()->where('is_active', '>=', now()->subWeek())->count())->badgeColor('success'),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('is_active', 1))
+                ->badge(User::query()->where('is_active', '>=', now()->subWeek())->count())->badgeColor('success'),
             'This Week' => ComponentsTab::make('This week')
-              ->modifyQueryUsing(fn (Builder $query) => $query->where('created_at', '>=', now()->subWeek()))
-              ->badge(User::query()->where('created_at', '>=', now()->subWeek())->count())->badgeColor('success'),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_at', '>=', now()->subWeek()))
+                ->badge(User::query()->where('created_at', '>=', now()->subWeek())->count())->badgeColor('success'),
             'This Month' => ComponentsTab::make('This Month')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('created_at', '>=', now()->subMonth()))
                 ->badge(User::query()->where('created_at', '>=', now()->subMonth())->count())->badgeColor('info'),

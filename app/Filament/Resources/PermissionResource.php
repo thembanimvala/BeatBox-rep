@@ -40,13 +40,13 @@ class PermissionResource extends Resource
             TextColumn::make('name')
                 ->searchable()
                 ->sortable(),
-            ])
+                ])
             ->filters([
                 //
-            ])
+                ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
+                ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -58,7 +58,7 @@ class PermissionResource extends Resource
     {
         return [
             //
-        ];
+            ];
     }
 
     public static function getPages(): array
@@ -67,6 +67,6 @@ class PermissionResource extends Resource
             'index' => Pages\ListPermissions::route('/'),
             'create' => Pages\CreatePermission::route('/create'),
             'edit' => Pages\EditPermission::route('/{record}/edit'),
-        ];
+            ];
     }
 }

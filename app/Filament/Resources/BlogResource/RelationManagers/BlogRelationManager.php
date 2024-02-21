@@ -18,7 +18,7 @@ class BlogRelationManager extends RelationManager
     {
         return $form
             ->schema([
-            Forms\Components\TextInput::make('blogs.name')
+                Forms\Components\TextInput::make('blogs.name')
                 ->required()
                 ->maxLength(255),
             ]);
