@@ -61,7 +61,7 @@ class TagResource extends Resource
                 ->toggleable(isToggledHiddenByDefault: true),
                 ])
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make(),
                 ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -69,8 +69,10 @@ class TagResource extends Resource
                 ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
+                    ]),
             ]);
     }
 

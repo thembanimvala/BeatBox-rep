@@ -29,7 +29,7 @@ class TagPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user, Tag $tag): bool
+    public function create(User $user,): bool
     {
         return $user->can('tags.create');
     }
