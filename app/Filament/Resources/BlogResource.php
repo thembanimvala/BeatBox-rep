@@ -49,13 +49,14 @@ class BlogResource extends Resource
                 Forms\Components\Select::make('writer_id')
                     ->relationship('Writer', 'name')
                     ->preload()
-                    ->searchable(),
-                Forms\Components\TextInput::make('name')
+                    ->searchable()
+                    ->required(),
+                TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
+                    ->reactive()
+                    ->debounce(600)
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                TextInput::make('slug'),
                 Forms\Components\Textarea::make('intro')
                     ->required()
                     ->columnSpanFull()
@@ -67,10 +68,12 @@ class BlogResource extends Resource
                 Forms\Components\FileUpload::make('photo')
                     ->image()
                     ->acceptedFileTypes(['image/jpeg', 'image/webp'])
-                    ->openable(),
+                    ->openable()
+                    ->required(),
                 Forms\Components\Select::make('tags')
                       ->label('Tags')
                       ->multiple()
+                      ->required()
                       ->searchable()
                       ->relationship(titleAttribute: 'name')
                       ->getSearchResultsUsing(fn (string $search): array => tag::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
