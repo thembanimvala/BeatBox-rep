@@ -15,6 +15,5 @@ class TagSeeder extends Seeder
     {
         Tag::truncate();
         Tag::factory(20)->create();
-
     }
 }

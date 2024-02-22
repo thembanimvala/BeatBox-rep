@@ -18,10 +18,9 @@ class BlogFactory extends Factory
      */
     public function definition(): array
     {
-
         $name = $this->faker->sentence(rand(2,4));
         $slug = Str::slug($name);
-        
+
         return [
             'writer_id' => rand(1,5),
             'name' => $name,

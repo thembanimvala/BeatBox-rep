@@ -15,7 +15,6 @@ return new class extends Migration
             $table->foreignId('blog_id');
             $table->foreignId('tag_id');
         });
-
     }
     /**
      * Reverse the migrations.

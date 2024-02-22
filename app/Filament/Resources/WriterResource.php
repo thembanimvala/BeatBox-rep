@@ -95,6 +95,7 @@ class WriterResource extends Resource
             'edit' => Pages\EditWriter::route('/{record}/edit'),
         ];
     }
+    
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();

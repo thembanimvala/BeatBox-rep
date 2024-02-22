@@ -14,9 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-
-
-
         $user1 = User::updateOrCreate(
             [
                 'email'               => 'thembani@beatbox.co.za',],
@@ -48,6 +45,5 @@ class UserSeeder extends Seeder
         $user3->assignRole(User::WEBMASTER);
 
         User::factory()->count(10)->create();
-
     }
 }

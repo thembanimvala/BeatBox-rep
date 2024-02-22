@@ -25,7 +25,5 @@ class BlogSeeder extends Seeder
             $blog->tags()->sync($tags);
             $count ++;
         }
-
-
     }
 }

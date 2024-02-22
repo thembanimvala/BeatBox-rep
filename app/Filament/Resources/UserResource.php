@@ -144,5 +144,4 @@ class UserResource extends Resource
             'Roles'  => $record->roles->pluck('name'),
         ];
     }
-
 }

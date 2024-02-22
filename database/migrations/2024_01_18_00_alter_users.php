@@ -15,7 +15,6 @@ return new class extends Migration
             $table->boolean('is_active')->default(false)->after('email');
         });
     }
-
     /**
      * Reverse the migrations.
      */
