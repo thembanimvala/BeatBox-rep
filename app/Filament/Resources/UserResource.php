@@ -110,7 +110,8 @@ class UserResource extends Resource
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
             'view' => Pages\ViewUser::route('/{record}'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'edit' => UserResource\Pages\CustomEditUser::route('/{record}/edit'),
+
         ];
     }
 
